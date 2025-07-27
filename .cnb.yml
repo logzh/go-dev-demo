@@ -10,6 +10,8 @@ $:
 feat*:
   push:
     - stages:
+        - name: commitlint
+          image: cnbcool/commitlint
         - name: sync to github
           imports: https://cnb.cool/spencezhang/my-keys/-/blob/main/env.yml
           image: tencentcom/git-sync
