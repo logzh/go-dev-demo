@@ -79,7 +79,11 @@ func (s *Service) ListUsers(c *gin.Context, req *ListUsersRequest) (*ListUsersRe
 
 func (s *Service) GetUser(c *gin.Context, req *GetUserRequest) (*GetUserResponse, error) {
 	if req.ID == "404" {
-		return nil, Errorf(http.StatusNotFound, "user not found")
+		return nil, Errorf(404, "user not found")
+	}
+
+	if req.ID == "123" {
+		return nil, Errorf(123, "user not found")
 	}
 
 	return &GetUserResponse{
@@ -91,29 +95,29 @@ func (s *Service) GetUser(c *gin.Context, req *GetUserRequest) (*GetUserResponse
 	}, nil
 }
 
-func Errorf(status int, format string, a ...any) error {
+func Errorf(code int, format string, a ...any) error {
 	return &apiError{
-		error:  fmt.Errorf(format, a...),
-		status: status,
+		error: fmt.Errorf(format, a...),
+		code:  code,
 	}
 }
 
 type APIError interface {
 	error
 
-	GetStatus() int
+	Code() int
 }
 
 type apiError struct {
 	error
 
-	status int
+	code int
 }
 
 var _ APIError = &apiError{}
 
-func (e *apiError) GetStatus() int {
-	return e.status
+func (e *apiError) Code() int {
+	return e.code
 }
 
 // Res 统一回复结构
@@ -129,10 +133,16 @@ func HTTPRsp(c *gin.Context, data interface{}, err error) {
 	rsp := Res{}
 	rsp.Code = 0
 	rsp.Msg = "success"
+
+	tmpErr, ok := err.(*apiError)
+	if !ok {
+		tmpErr = Errorf(500, "system error").(*apiError)
+	}
+
 	// 错误码不为空时，重新赋值
 	if err != nil {
-		rsp.Code = -1
-		rsp.Msg = err.Error()
+		rsp.Code = tmpErr.Code()
+		rsp.Msg = tmpErr.Error()
 	}
 
 	code := rsp.Code
