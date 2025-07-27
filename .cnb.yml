@@ -12,11 +12,11 @@ feat*:
     - stages:
         - name: commitlint
           image: cnbcool/commitlint
-        - name: build
+        - name: go lint gin-demo
           image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches:35a1af64a3b3b3be8ea2268db4f28b8543c47ded
           script: |
             cd gin-demo && make
-        - name: build
+        - name: go lint write-gin-like-grpc
           image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches:35a1af64a3b3b3be8ea2268db4f28b8543c47ded
           script: |
             cd write-gin-like-grpc && make
