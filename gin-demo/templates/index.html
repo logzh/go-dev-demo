@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{{ .title }}</h1>
+            <p>一个使用Gin框架构建的简单Web应用</p>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2>API演示</h2>
+                <p>这个演示应用提供了以下API端点：</p>
+                <ul>
+                    <li><code>GET /api/users</code> - 获取所有用户</li>
+                    <li><code>GET /api/users/:id</code> - 获取指定ID的用户</li>
+                    <li><code>POST /api/users</code> - 创建新用户</li>
+                </ul>
+                <div class="api-test">
+                    <h3>测试API</h3>
+                    <button id="get-users">获取所有用户</button>
+                    <div>
+                        <label for="user-id">用户ID：</label>
+                        <input type="text" id="user-id" placeholder="输入用户ID">
+                        <button id="get-user">获取用户</button>
+                    </div>
+                    <div>
+                        <h4>创建新用户</h4>
+                        <div class="form-group">
+                            <label for="new-id">ID：</label>
+                            <input type="text" id="new-id" placeholder="输入ID">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-username">用户名：</label>
+                            <input type="text" id="new-username" placeholder="输入用户名">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-email">邮箱：</label>
+                            <input type="email" id="new-email" placeholder="输入邮箱">
+                        </div>
+                        <button id="create-user">创建用户</button>
+                    </div>
+                </div>
+                <div class="result">
+                    <h3>结果</h3>
+                    <pre id="result"></pre>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Gin框架演示</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+/* 基本样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* 头部样式 */
+header {
+    background: #0275d8;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+/* 卡片样式 */
+.card {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style-position: inside;
+    margin-bottom: 20px;
+}
+
+code {
+    background: #f4f4f4;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+}
+
+/* API测试区域样式 */
+.api-test {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.api-test div {
+    margin: 10px 0;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 80px;
+    margin-right: 10px;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    width: 200px;
+}
+
+button {
+    background: #0275d8;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+button:hover {
+    background: #025aa5;
+}
+
+/* 结果区域样式 */
+.result {
+    margin-top: 20px;
+}
+
+pre {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    min-height: 100px;
+    border: 1px solid #ddd;
+}
+
+/* 页脚样式 */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    color: #666;
+}
