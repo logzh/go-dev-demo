@@ -12,6 +12,14 @@ feat*:
     - stages:
         - name: commitlint
           image: cnbcool/commitlint
+        - name: build
+          image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches
+          script: |
+            cd gin-demo && make
+        - name: build
+          image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches
+          script: |
+            cd write-gin-like-grpc && make
         - name: sync to github
           imports: https://cnb.cool/spencezhang/my-keys/-/blob/main/env.yml
           image: tencentcom/git-sync
