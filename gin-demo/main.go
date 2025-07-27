@@ -45,16 +45,19 @@ func main() {
 	{
 		// 获取所有用户
 		api.GET("/users", getUsers)
-		
+
 		// 获取单个用户
 		api.GET("/users/:id", getUserByID)
-		
+
 		// 创建用户
 		api.POST("/users", createUser)
 	}
 
 	// 启动服务器
-	r.Run(":8080") // 监听并在0.0.0.0:8080上启动服务
+	err := r.Run(":8080") // 监听并在0.0.0.0:8080上启动服务
+	if err != nil {
+		panic(err)
+	}
 }
 
 // 自定义中间件
@@ -80,7 +83,7 @@ func getUsers(c *gin.Context) {
 // 根据ID获取用户的处理函数
 func getUserByID(c *gin.Context) {
 	id := c.Param("id")
-	
+
 	for _, user := range users {
 		if user.ID == id {
 			c.JSON(http.StatusOK, gin.H{
@@ -89,7 +92,7 @@ func getUserByID(c *gin.Context) {
 			return
 		}
 	}
-	
+
 	c.JSON(http.StatusNotFound, gin.H{
 		"message": "用户不存在",
 	})
@@ -98,7 +101,7 @@ func getUserByID(c *gin.Context) {
 // 创建用户的处理函数
 func createUser(c *gin.Context) {
 	var newUser User
-	
+
 	// 绑定JSON请求体到User结构体
 	if err := c.ShouldBindJSON(&newUser); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -106,11 +109,11 @@ func createUser(c *gin.Context) {
 		})
 		return
 	}
-	
+
 	// 简单地将新用户添加到用户列表中
 	// 在实际应用中，这里会与数据库交互
 	users = append(users, newUser)
-	
+
 	c.JSON(http.StatusCreated, gin.H{
 		"message": "用户创建成功",
 		"user":    newUser,

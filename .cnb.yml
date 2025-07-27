@@ -10,6 +10,16 @@ $:
 feat*:
   push:
     - stages:
+        - name: commitlint
+          image: cnbcool/commitlint
+        - name: go lint gin-demo
+          image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches:35a1af64a3b3b3be8ea2268db4f28b8543c47ded
+          script: |
+            cd gin-demo && make
+        - name: go lint write-gin-like-grpc
+          image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches:35a1af64a3b3b3be8ea2268db4f28b8543c47ded
+          script: |
+            cd write-gin-like-grpc && make
         - name: sync to github
           imports: https://cnb.cool/spencezhang/my-keys/-/blob/main/env.yml
           image: tencentcom/git-sync
