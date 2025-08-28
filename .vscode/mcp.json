@@ -1,0 +1,13 @@
+{
+	"servers": {
+		"my-mcp-server-4c09b902": {
+			"type": "stdio",
+			"command": "/bin/bash",
+			"args": [
+				"-c",
+				"cd mcp-demo/stdio-demo && go run main.go"
+			]
+		}
+	},
+	"inputs": []
+}
