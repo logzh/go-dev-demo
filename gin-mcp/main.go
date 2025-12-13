@@ -21,18 +21,21 @@ func main() {
 	RegisterGreetTool(mcpServer)
 
 	// 创建 StreamableHTTPServer
-	mcpHTTPServer := server.NewStreamableHTTPServer(mcpServer)
+	endpointPath := "/v1/mcp"
+	mcpHTTPServer := server.NewStreamableHTTPServer(mcpServer,
+		server.WithEndpointPath(endpointPath),
+	)
 
 	// 创建 http.ServeMux 并挂载 MCP 服务器
 	mux := http.NewServeMux()
-	mux.Handle("/v1/mcp", mcpHTTPServer)
+	mux.Handle(endpointPath, mcpHTTPServer)
 
 	// 创建 Gin 路由器
 	router := gin.Default()
 
 	// 将 ServeMux 集成到 Gin 路由
 	// 注意：mux 中已经处理了 /v1/mcp 路径，所以这里直接使用 mux 作为处理器
-	router.POST("/v1/mcp", gin.WrapH(mux))
+	router.POST(endpointPath, gin.WrapH(mux))
 
 	// 可选：添加健康检查端点
 	router.GET("/health", func(c *gin.Context) {
