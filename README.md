@@ -154,11 +154,16 @@ use ./gin-mcp
 
 ### 代码格式化
 
-各个子项目都提供了 Makefile，可以使用 `make lint` 进行代码格式化：
+项目根目录提供了统一的 Makefile，可以使用 `make lint` 对所有子项目进行代码格式化：
 
 ```bash
-cd gin-demo && make lint
-cd gin-mcp && make lint
+# 对所有子项目执行 lint
+make lint
+
+# 或者对单个项目执行 lint
+make lint-gin-demo
+make lint-gin-mcp
+make lint-write-gin-like-grpc
 ```
 
 ### 添加新项目
