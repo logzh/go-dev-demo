@@ -33,7 +33,7 @@ type CreateUserResponse struct {
 }
 
 type ListUsersRequest struct {
-	Name string `form:"name"`
+	Name string `form:"name" binding:"required"`
 }
 
 type ListUsersResponse struct {

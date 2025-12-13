@@ -11,14 +11,10 @@ feat*:
     - stages:
         - name: commitlint
           image: cnbcool/commitlint
-        - name: go lint gin-demo
-          image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches:35a1af64a3b3b3be8ea2268db4f28b8543c47ded
+        - name: go lint all
+          image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches:7f7471b720fceb4cc7f6e4e37f8a80d831add0f0
           script: |
-            cd gin-demo && make
-        - name: go lint write-gin-like-grpc
-          image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches:35a1af64a3b3b3be8ea2268db4f28b8543c47ded
-          script: |
-            cd write-gin-like-grpc && make
+            make lint
         - name: sync to github
           imports: https://cnb.cool/spencezhang/my-keys/-/blob/main/env.yml
           image: tencentcom/git-sync
