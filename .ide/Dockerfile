@@ -1,4 +1,4 @@
-FROM golang:1.24
+FROM golang:1.24.11
 
 ARG GOLANGCI_LINT_VERSION=v2.3.0
 
