@@ -1,8 +1,11 @@
-module write-gin-like-grpc
+module gin-mcp
 
 go 1.24.11
 
-require github.com/gin-gonic/gin v1.10.1
+require (
+	github.com/gin-gonic/gin v1.10.0
+	github.com/mark3labs/mcp-go v0.1.0
+)
 
 require (
 	github.com/bytedance/sonic v1.11.6 // indirect

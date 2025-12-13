@@ -2,7 +2,6 @@ $:
   vscode:
     - docker:
         build: .ide/Dockerfile
-        # image: mcr.microsoft.com/devcontainers/universal
       services:
         - vscode
         - docker
