@@ -1,4 +1,9 @@
-go 1.24.5
+go 1.24.11
 
 use ./gin-demo
+
 use ./write-gin-like-grpc
+
+use ./mcp-demo/stdio-demo
+
+use ./gin-mcp
