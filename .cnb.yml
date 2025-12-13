@@ -12,7 +12,7 @@ feat*:
         - name: commitlint
           image: cnbcool/commitlint
         - name: go lint all
-          image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches:docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches:7f7471b720fceb4cc7f6e4e37f8a80d831add0f0
+          image: docker.cnb.cool/spencezhang/go-dev-demo/dockerfile-caches:7f7471b720fceb4cc7f6e4e37f8a80d831add0f0
           script: |
             make lint
         - name: sync to github
