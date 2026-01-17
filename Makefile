@@ -1,7 +1,12 @@
-.PHONY: all lint lint-all lint-gin-demo lint-gin-mcp lint-write-gin-like-grpc
+.PHONY: all sync lint lint-all lint-gin-demo lint-gin-mcp lint-write-gin-like-grpc
 
-# 默认目标：对所有子项目执行 lint
-all: lint-all
+# 默认目标：同步工作区并对所有子项目执行 lint
+all: sync lint-all
+
+# 同步 Go 工作区
+sync:
+	@echo "Syncing Go workspace..."
+	@go work sync
 
 # 对所有子项目执行 lint
 lint-all:
@@ -11,7 +16,7 @@ lint-all:
 	@$(MAKE) lint-write-gin-like-grpc
 
 # 对单个项目执行 lint
-lint: lint-all
+lint: sync lint-all
 
 # gin-demo 项目 lint
 lint-gin-demo:
